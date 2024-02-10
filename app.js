@@ -25,6 +25,9 @@ app.get('/population-density', (req, res) => {
 
     res.json({ city: cityName, populationDensity: cityData[3] });
 });
+app.get('/', (req, res) => {
+    res.json({ status: 200, message: "Welcome to the population density API" });
+});
 
 // Start the server
 app.listen(PORT, () => {
