@@ -1,5 +1,57 @@
 {
+  "name": "smtp-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d dist && cp src/data/insee_rp_hist_1968.xlsx dist/data",
+    "start": "npm run build && cp src/data/insee_rp_hist_1968.xlsx dist/data && better-npm-run prod",
+    "dev": "better-npm-run dev"
+  },
+  "betterScripts": {
+    "dev": {
+      "command": "nodemon  --exec npx babel-node ./src/app.js",
+      "env": {
+        "NODE_ENV": "development",
+        "PORT": 3000
+      }
+    },
+    "prod": {
+      "command": "node ./dist/app.js",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": 4000
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ihonore/Excel-Parser.git"
+  },
+  "keywords": [],
+  "author": "Honore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ihonore/Excel-Parser/issues"
+  },
+  "homepage": "https://github.com/ihonore/Excel-Parser#readme",
+  "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/node": "^7.20.7",
+    "@babel/plugin-syntax-import-assertions": "^7.20.0",
+    "nodemon": "^3.0.3"
+  },
   "dependencies": {
+    "@babel/cli": "^7.21.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-transform-runtime": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "@babel/register": "^7.21.0",
+    "@googleapis/gmail": "^7.0.0",
+    "better-npm-run": "^0.1.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "xlsx": "^0.18.5"
   }

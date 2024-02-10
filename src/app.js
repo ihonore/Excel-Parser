@@ -3,8 +3,9 @@ const XLSX = require('xlsx');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+console.log("Opening")
 // Load the Excel file
-const workbook = XLSX.readFile('./data/insee_rp_hist_1968.xlsx');
+const workbook = XLSX.readFile('./src/data/insee_rp_hist_1968.xlsx');
 const sheetName = workbook.SheetNames[0];
 const populationData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1 });
 
