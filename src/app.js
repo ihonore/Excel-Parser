@@ -7,6 +7,10 @@ console.log("Opening");
 
 let populationData;
 
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT} 🟢`);
+});
+
 // Function to load Excel data asynchronously
 const loadExcelData = () => {
     return new Promise((resolve, reject) => {
@@ -17,16 +21,6 @@ const loadExcelData = () => {
     });
 };
 
-// Load Excel data asynchronously
-loadExcelData().then(data => {
-    populationData = data;
-    // Start the server once the Excel data is loaded
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT} 🟢`);
-    });
-}).catch(error => {
-    console.error("Error loading Excel data:", error);
-});
 
 // API endpoint to search for city population density
 app.get('/population-density', (req, res) => {
@@ -52,5 +46,13 @@ app.get('/population-density', (req, res) => {
 
 // Root endpoint
 app.get('/', (req, res) => {
+
+    // Load Excel data asynchronously
+    loadExcelData().then(data => {
+        populationData = data;
+    }).catch(error => {
+        console.error("Error loading Excel data:", error);
+    });
+
     res.json({ status: 200, message: "Welcome to the population density API" });
 });
