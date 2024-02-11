@@ -1,7 +1,10 @@
 const express = require('express');
 const XLSX = require('xlsx');
 const app = express();
+const cors = require('cors');
 const PORT = process.env.PORT || 3000;
+
+app.use(cors());
 
 // Load the Excel file
 const workbook = XLSX.readFile('./src/data/insee_rp_hist_2020_filtered.xlsx');
