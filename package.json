@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx babel src -d dist && cp src/data/insee_rp_hist_1968.xlsx dist/data",
-    "start": "npm run build && cp src/data/insee_rp_hist_1968.xlsx dist/data && better-npm-run prod",
+    "build": "npx babel src -d dist && cp src/data/insee_rp_hist_2020_filtered.xlsx dist/data",
+    "start": "npm run build && cp src/data/insee_rp_hist_2020_filtered.xlsx dist/data && better-npm-run prod",
     "dev": "better-npm-run dev"
   },
   "betterScripts": {
